@@ -17,17 +17,17 @@ Now, say you are trying to find the value behind this hash. How would Hash-gen
 do this? Just run the following:
 
 ```bash
-hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --verbose --log
+hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
 ```
 
 After running this command, Hash-gen would set the target hash target to `bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d`, starting at `5` it would increment by `1`, each time converting the number to hex, hashing the hex and checking
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
-ryan$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -h sha256 -v -l
+ryan$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
 
-Hash type:   sha256
-Target hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
+Hash Type:   sha256
+Target Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
 
 Created folder: /Users/ryan/Documents/hash_logs
 Matches will be saved to: /Users/ryan/Documents/hash_logs/sha256-20811.txt
