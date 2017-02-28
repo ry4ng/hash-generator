@@ -24,7 +24,7 @@ After running this command, Hash-gen would set the target hash target to `bf9949
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
-user$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -h sha256 -v -l
+ryan$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -h sha256 -v -l
 
 Hash type:   sha256
 Target hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
