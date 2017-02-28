@@ -10,7 +10,7 @@ var optionDefentions = [
     { name: 'start', alias: 's', type: String, defaultValue: "1"},
     { name: 'delay', alias: 'd', type: String, defaultValue: "5"},
     { name: 'log', alias: 'l', type: Boolean},
-    { name: 'verbose', alias: 'v', type: Boolean}
+    { name: 'verbose', alias: 'V', type: Boolean}
 ];
 
 var options = commandLineArgs(optionDefentions);

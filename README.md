@@ -17,7 +17,7 @@ Now, say you are trying to find the value behind this hash. How would Hash-gen
 do this? Just run the following:
 
 ```bash
-hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --hash sha256
+hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --verbose --log
 ```
 
 After running this command, Hash-gen would set the target hash target to `bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d`, starting at `5` it would increment by `1`, each time converting the number to hex, hashing the hex and checking
@@ -99,5 +99,5 @@ npm install --global hash-gen
 -d, --delay     Delay in milliseconds between each hash (5 is default).
 
 -l, --log       Keep a log of all created hashes to file (Slower hash generation when ON).
--v, --verbose   Verbose output (shows hex & hash)
+-V, --verbose   Verbose output (shows hex & hash)
 ```
