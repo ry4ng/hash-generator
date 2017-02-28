@@ -99,5 +99,5 @@ npm install --global hash-gen
 -d, --delay     Delay in milliseconds between each hash (5 is default).
 
 -l, --log       Keep a log of all created hashes to file (Slower hash generation when ON).
--V, --verbose   Verbose output (shows hex & hash)
+-V, --Verbose   Verbose output (shows hex & hash)
 ```
