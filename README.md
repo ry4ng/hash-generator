@@ -92,6 +92,10 @@ npm install --global hash-gen
 
 ### App options
 
+```bash
+hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
+```
+
 ```
 -t, --target    The hash you are trying to find a match for.
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
