@@ -8,11 +8,11 @@ function setInteger(stringInt){
     startInterger = stringInt;
 }
 
-function generateHashes(hashType, targetHash, filepath){
+function generateHashes(hashType, targetHash, filepath, delay){
     var hashType = hashType;
     var targetHash = targetHash;
     console.log(hashType, targetHash);
-    var hashGenerator = setInterval(start, 10);
+    var hashGenerator = setInterval(start, delay);
     function start(){
         var hexString = converter.decToHex(startInterger);
         hexString = hexString.replace("x", "");

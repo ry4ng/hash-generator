@@ -31,8 +31,8 @@
   "license": "ISC",
   "preferGlobal": true,
   "bin": {
-      "hash-gen": "hash-gen.js"
-  },
+    "hash-gen": "hash-gen.js"
+},
   "bugs": {
     "url": "https://github.com/ryansmith98/hash-generator/issues"
   },
