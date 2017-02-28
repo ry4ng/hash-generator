@@ -8,33 +8,39 @@ function setInteger(stringInt){
     startInterger = stringInt;
 }
 
-function generateHashes(hashType, targetHash, filepath, delay){
+function generateHashes(hashType, targetHash, filepath, delay, log, verbose){
     var hashType = hashType;
     var targetHash = targetHash;
 
     var hashGenerator = setInterval(start, delay);
     function start(){
+
         var hexString = converter.decToHex(startInterger);
         hexString = hexString.replace("x", "");
         var hash = crypto.createHash(hashType).update(hexString).digest('hex');
+
         if (hash == targetHash){
-            console.log('-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n');
-            console.log(`Writing to ${filepath}...`);
+            console.log('\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n');
+            console.log(`Writing to ${process.cwd()}/${filepath}...`);
             fs.appendFile(filepath, `Matched On Int: ${startInterger}\nHex Value: ${hexString}\nHash Type: ${hashType}\nHash: ${hash}\n\n`, (err) => {
                 if (err) throw err;
-                console.log('Sucessfully saved match.\n');
+                console.log('Successfully saved match.\n');
             });
             clearInterval(hashGenerator);
             return true;
         }
-        // if (i == (loopIterations -1)){
-            console.log(`\nInteger:    ${startInterger}`);
-            console.log(`Hex Value:  ${hexString.replace("x", "")}`);
-            console.log(`Hash Value: ${hash}\n`);
-        // }
-        // fs.appendFile(__dirname + '/log.txt', `${number}\n${hexString}\n${hash}\n\n`, (err) => {
-        //     if (err) throw err;
-        // });
+
+        console.log(`\nInt:  ${startInterger}`);
+        if (verbose == true){
+            console.log(`Hex:  ${hexString.replace("x", "")}`);
+            console.log(`Hash: ${hash}\n`);
+        }
+
+        if (log == true){
+            fs.appendFileSync(filepath, `${hexString.replace("x", "")}\n`);
+            fs.appendFileSync(filepath, `${hash}\n\n`);
+        }
+
         if (startInterger.length > 15){
             var lastFive = startInterger.substr(startInterger.length - 10);
             var zero = 0;
@@ -59,6 +65,7 @@ function generateHashes(hashType, targetHash, filepath, delay){
             var oldNum = startInterger.slice(0, (startInterger.length - 10));
             startInterger = oldNum + lastFive;
         }
+
         var int = parseInt(startInterger);
         int++;
         startInterger = int.toString();
