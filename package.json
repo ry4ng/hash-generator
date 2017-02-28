@@ -1,0 +1,44 @@
+{
+  "name": "hash-gen",
+  "version": "1.2.1",
+  "description": "Quickly generates key pair hex/hash values.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node hash-gen.js",
+    "patch": "npm version patch && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryansmith98/hash-generator.git"
+  },
+  "keywords": [
+    "Hashing",
+    "Hash",
+    "Generator",
+    "Encryption",
+    "Decrypt",
+    "Decryption",
+    "sha-256",
+    "sha-512",
+    "hash",
+    "values",
+    "hash",
+    "database",
+    "hash",
+    "indexing"
+  ],
+  "author": "Ryan Smith",
+  "license": "ISC",
+  "preferGlobal": true,
+  "bin": {
+      "hash-gen": "hash-gen.js"
+  },
+  "bugs": {
+    "url": "https://github.com/ryansmith98/hash-generator/issues"
+  },
+  "homepage": "https://github.com/ryansmith98/hash-generator#readme",
+  "dependencies": {
+    "command-line-args": "^4.0.1",
+    "hex2dec": "^1.0.1"
+  }
+}
