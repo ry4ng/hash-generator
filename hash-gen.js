@@ -9,6 +9,8 @@ var optionDefentions = [
     { name: 'target', alias: 't', type: String},
     { name: 'start', alias: 's', type: String, defaultValue: "1"},
     { name: 'delay', alias: 'd', type: String, defaultValue: "5"},
+    { name: 'log', alias: 'l', type: Boolean},
+    { name: 'verbose', alias: 'v', type: Boolean}
 ];
 
 var options = commandLineArgs(optionDefentions);
@@ -16,38 +18,51 @@ var options = commandLineArgs(optionDefentions);
 // Set Hash Type e.g sha256
 var hashType = options.hash || "sha256";
 hashType = hashType.toLowerCase();
-console.log(`\nHash type:   ${hashType}`);
+console.log(`\nHash Type:   ${hashType}`);
 
 // Target Hash Value
 var targetHash = options.target;
 targetHash = targetHash.toLowerCase();
-console.log(`Target hash: ${targetHash}\n`);
+console.log(`Target Hash: ${targetHash}\n`);
 
 // Set the initial Integer Value to start encrypting
 var startInterger = options.start;
 generate.setStart(startInterger);
 
+// Delay in ms between hashes
 var delay = options.delay;
+// Whether to keep log of hashes
+var log = options.log;
+// Verbose
+var verbose = options.verbose;
 
-var fileContent = "Hash-gen matches.";
+var dir = './hash_logs';
+
+if (!fs.existsSync(dir)){
+    console.log("Created folder: " + process.cwd() + "/hash_logs");
+    fs.mkdirSync(dir);
+}
+
+var fileContent = `${hashType} hash log\n\nTarget hash: ${targetHash}\n\n\n`;
 
 // The absolute path of the new file with its name
 var d = new Date();
 var n = d.getTime();
-var filepath = `${hashType}-${n}.txt`;
+n = n.toString().slice(8);
+var filepath = `hash_logs/${hashType}-${n}.txt`;
 
 fs.writeFile(filepath, fileContent, (err) => {
     if (err) throw err;
-    console.log(`Hash matches will be saved to file: ${filepath}\n`);
+    console.log(`Matches will be saved to: ${process.cwd()}/${filepath}\n`);
 });
 
-var counter = 3;
+var counter = 5;
 var countdown = setInterval(function() {
-    counter--;
-    if(counter < 0) {
+    if(counter <= 0) {
         clearInterval(countdown);
-        generate.hashes(hashType, targetHash, filepath, delay);
+        generate.hashes(hashType, targetHash, filepath, delay, log, verbose);
     } else {
         console.log(`Starting hashing in ${counter.toString()} seconds.`);
     }
+    counter--;
 }, 1000);

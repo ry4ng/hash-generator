@@ -24,11 +24,16 @@ After running this command, Hash-gen would set the target hash target to `bf9949
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
+user$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -h sha256 -v -l
+
 Hash type:   sha256
 Target hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
 
-Hash matches will be saved to file: sha256-1488315388551.txt
+Created folder: /Users/ryan/Documents/hash_logs
+Matches will be saved to: /Users/ryan/Documents/hash_logs/sha256-20811.txt
 
+Starting hashing in 4 seconds.
+Starting hashing in 3 seconds.
 Starting hashing in 2 seconds.
 Starting hashing in 1 seconds.
 Starting hashing in 0 seconds.
@@ -63,8 +68,8 @@ If Hash-gen does finds a match it will output something like this to the console
 ```bash
 -- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --
 
-Writing to sha256-1488314011432.txt...
-Sucessfully saved match.
+Writing to /Users/ryan/Documents/hash_logs/sha256-54048.txt...
+Successfully saved match.
 ```
 
 Locate the .txt file (different each time) and you will find the following text:
@@ -88,8 +93,11 @@ npm install --global hash-gen
 ### App options
 
 ```
--h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -t, --target    The hash you are trying to find a match for.
+-h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -s, --start     The number you would like to start at (1 is default).
--d, --delay     Delay in milliseconds between each hash (5ms is default).
+-d, --delay     Delay in milliseconds between each hash (5 is default).
+
+-l, --log       Keep a log of all created hashes to file (Slower hash generation when ON).
+-v, --verbose   Verbose output (shows hex & hash)
 ```
