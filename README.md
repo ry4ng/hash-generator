@@ -81,7 +81,7 @@ Hash Type: sha256
 Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
 ```
 
-Congratulations! You now know that your `target` hash has the hex value of `01f4`.
+Congratulations! You now know that your `target hash` has the hex value of `01f4`.
 
 ## 1. Install hash-gen
 
