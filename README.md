@@ -3,7 +3,7 @@
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
 unencrypted value of the hash.
 
-![alt tag](https://s17.postimg.org/lcedupki7/Screen_Shot_2017_03_01_at_20_57_40.png)
+![alt tag](https://s2.postimg.org/74q9wpg7t/Screen_Shot_2017_03_01_at_20_57_40.png)
 
 ## Example
 
