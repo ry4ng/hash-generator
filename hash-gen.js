@@ -128,6 +128,7 @@ var targetHash = options.target;
 targetHash = targetHash.toLowerCase();
 // console.log(`Target Hash: ${targetHash}\n`);
 startScreen.insertLine("3", `{bold}Target Hash:{/bold} ${targetHash}`);
+startScreen.insertLine("4", `{bold}Starting At:{/bold} ${options.start}`);
 screen.render();
 
 var startInterger = options.start;
@@ -234,3 +235,9 @@ var countdown = setInterval(function() {
     counter--;
     progressValue += 10;
 }, 200);
+
+process.on('exit', (code) => {
+    if (code == "matchFound"){
+        console.log(`\nA match for your target hash has been found! Check ${filepath} for the matching hex value!\n`);
+    }
+});

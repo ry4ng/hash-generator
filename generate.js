@@ -2,8 +2,8 @@ const converter = require('hex2dec');
 const crypto = require('crypto');
 const fs = require('fs');
 
-const blessed = require('blessed');
-const contrib = require('blessed-contrib');
+// const blessed = require('blessed');
+// const contrib = require('blessed-contrib');
 
 var startInterger = "";
 
@@ -15,33 +15,33 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
     var hashType = hashType;
     var targetHash = targetHash;
 
-    var screen = blessed.screen();
-    grid = new contrib.grid({rows: 5, cols: 2, screen: screen});
-    var output;
-    var windowWidth = process.stdout.columns;
-    var windowHeight = process.stdout.rows;
+    // var screen = blessed.screen();
+    // grid = new contrib.grid({rows: 5, cols: 2, screen: screen});
+    // var output;
+    // var windowWidth = process.stdout.columns;
+    // var windowHeight = process.stdout.rows;
+    //
+    // if (windowWidth < 80){
+    //     if (windowHeight <= 30){
+    //         output = grid.set(0, 0, 5, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     } else {
+    //         output = grid.set(0, 0, 4, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     }
+    // } else if (windowWidth > 150){
+    //     if (windowHeight <= 30){
+    //         output = grid.set(0, 0, 5, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     } else {
+    //         output = grid.set(0, 0, 4, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     }
+    // } else {
+    //     if (windowHeight <= 30){
+    //         output = grid.set(0, 0, 5, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     } else {
+    //         output = grid.set(0, 0, 4, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
+    //     }
+    // }
 
-    if (windowWidth < 80){
-        if (windowHeight <= 30){
-            output = grid.set(0, 0, 5, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        } else {
-            output = grid.set(0, 0, 4, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        }
-    } else if (windowWidth > 150){
-        if (windowHeight <= 30){
-            output = grid.set(0, 0, 5, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        } else {
-            output = grid.set(0, 0, 4, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        }
-    } else {
-        if (windowHeight <= 30){
-            output = grid.set(0, 0, 5, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        } else {
-            output = grid.set(0, 0, 4, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-        }
-    }
-
-    screen.append(output);
+    // screen.append(output);
 
     var hashGenerator = setInterval(start, delay);
 
@@ -57,23 +57,21 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
             fs.appendFile(filepath, `Matched On Int: ${startInterger}\nHex Value: ${hexString}\nHash Type: ${hashType}\nHash: ${hash}\n\n`, (err) => {
                 if (err) throw err;
                 console.log('Successfully saved match.\n');
+                process.exit('matchFound');
             });
             clearInterval(hashGenerator);
         }
 
-        // console.log(`\nInt:  ${startInterger}`);
+        console.log(`\nInt:  ${startInterger}`);
         if (verbose == true) {
-            output.log("");
-            output.log("Int:  " + startInterger);
-            output.log("Hex:  " + hexString.replace("x", ""));
-            output.log("Hash: " + hash + "");
             // output.log("");
-            screen.render();
-            // console.log(`Hex:  ${hexString.replace("x", "")}`);
-            // console.log(`Hash: ${hash}\n`);
-        } else {
-            output.log("Int:  " + startInterger);
-            screen.render();
+            // output.log("Int:  " + startInterger);
+            // output.log("Hex:  " + hexString.replace("x", ""));
+            // output.log("Hash: " + hash + "");
+            // output.log("");
+            // screen.render();
+            console.log(`Hex:  ${hexString.replace("x", "")}`);
+            console.log(`Hash: ${hash}\n`);
         }
 
         if (log == true) {
@@ -111,6 +109,7 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
         startInterger = int.toString();
 
     }
+
 }
 
 module.exports = {

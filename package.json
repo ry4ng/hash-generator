@@ -1,6 +1,6 @@
 {
   "name": "hash-gen",
-  "version": "3.0.0",
+  "version": "3.1.4",
   "description": "Quickly generates key pair hex/hash values.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -40,6 +40,7 @@
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.7.5",
     "command-line-args": "^4.0.1",
-    "hex2dec": "^1.0.1"
+    "hex2dec": "^1.0.1",
+    "keypress": "^0.2.1"
   }
 }

@@ -3,6 +3,8 @@
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
 unencrypted value of the hash.
 
+![alt tag](https://s23.postimg.org/p8w8624jv/Screen_Shot_2017_03_01_at_20_35_41.png)
+
 ## Example
 
 Take the number, `500`.
