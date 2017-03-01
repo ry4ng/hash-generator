@@ -26,20 +26,6 @@ After running this command, Hash-gen would set the target hash target to `bf9949
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
-$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
-
-Hash Type:   sha256
-Target Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
-
-Created folder: /Users/ryan/Documents/hash_logs
-Matches will be saved to: /Users/ryan/Documents/hash_logs/sha256-20811.txt
-
-Starting hashing in 4 seconds.
-Starting hashing in 3 seconds.
-Starting hashing in 2 seconds.
-Starting hashing in 1 seconds.
-Starting hashing in 0 seconds.
-
 Integer:    5
 Hex Value:  05
 Hash Value: c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2

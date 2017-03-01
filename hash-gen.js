@@ -238,6 +238,6 @@ var countdown = setInterval(function() {
 
 process.on('exit', (code) => {
     if (code == "matchFound"){
-        console.log(`\nA match for your target hash has been found! Check ${filepath} for the matching hex value!\n`);
+        console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
     }
 });
