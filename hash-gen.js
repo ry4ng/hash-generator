@@ -10,10 +10,27 @@ var optionDefentions = [
     { name: 'start', alias: 's', type: String, defaultValue: "1"},
     { name: 'delay', alias: 'd', type: String, defaultValue: "5"},
     { name: 'log', alias: 'l', type: Boolean},
-    { name: 'verbose', alias: 'V', type: Boolean}
+    { name: 'verbose', alias: 'V', type: Boolean},
+    { name: 'help', type: Boolean}
 ];
 
 var options = commandLineArgs(optionDefentions);
+
+if (options.help == true) {
+    console.log("\n-t, --target    The hash you are trying to find a match for.");
+    console.log("-h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)");
+    console.log("-s, --start     The number you would like to start at (1 is default).");
+    console.log("-d, --delay     Delay in milliseconds between each hash (5 is default).\n");
+
+    console.log("-l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON).");
+    console.log("-V, --Verbose   Verbose output (shows hex & hash)\n");
+    process.exit(-1);
+}
+
+if (!options.target && !options.help == true) {
+    console.log("\nHash-gen has been successfully installed! Time to get hashing.\n");
+    process.exit(-1);
+}
 
 // Set Hash Type e.g sha256
 var hashType = options.hash || "sha256";

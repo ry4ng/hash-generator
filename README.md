@@ -98,11 +98,12 @@ $ hash-gen --hash sha256 --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68
 ```
 
 ```
+    --help      Shows help for Hash-gen
 -t, --target    The hash you are trying to find a match for.
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -s, --start     The number you would like to start at (1 is default).
 -d, --delay     Delay in milliseconds between each hash (5 is default).
 
--l, --log       Keep a log of all created hashes to file (Slower hash generation when ON).
--V, --Verbose   Verbose output (shows hex & hash)
+-l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON).
+-V, --Verbose   Verbose output (Shows hex & hash)
 ```
