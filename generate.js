@@ -5,8 +5,6 @@ const fs = require('fs');
 const blessed = require('blessed');
 const contrib = require('blessed-contrib');
 
-
-
 var startInterger = "";
 
 function setInteger(stringInt) {
@@ -65,6 +63,7 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
 
         // console.log(`\nInt:  ${startInterger}`);
         if (verbose == true) {
+            output.log("");
             output.log("Int:  " + startInterger);
             output.log("Hex:  " + hexString.replace("x", ""));
             output.log("Hash: " + hash + "");

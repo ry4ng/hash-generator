@@ -4,14 +4,98 @@ const fs = require('fs');
 const commandLineArgs = require('command-line-args');
 const generate = require('./generate');
 
-var optionDefentions = [
-    { name: 'hash', alias: 'h', type: String, defaultValue: "sha256"},
-    { name: 'target', alias: 't', type: String},
-    { name: 'start', alias: 's', type: String, defaultValue: "1"},
-    { name: 'delay', alias: 'd', type: String, defaultValue: "5"},
-    { name: 'log', alias: 'l', type: Boolean},
-    { name: 'verbose', alias: 'V', type: Boolean},
-    { name: 'help', type: Boolean}
+const keypress = require('keypress');
+const blessed = require('blessed');
+const contrib = require('blessed-contrib');
+
+// SCREEN SET UP
+
+var screen = blessed.screen();
+var program = blessed.program();
+program.key('q', function(ch, key) {
+    program.clear();
+    program.disableMouse();
+    program.showCursor();
+    program.normalBuffer();
+    process.exit(0);
+});
+
+var terminalWidth = process.stdout.columns;
+var terminalHeight = process.stdout.rows;
+var screenWidth;
+var screenHeight;
+
+if (terminalHeight < 30){
+    screenWidth = '80%';
+    screenHeight = '75%';
+} else {
+    screenWidth = '55%';
+    screenHeight = '50%';
+}
+
+screen.title = 'Hash-gen';
+var startScreen = blessed.box({
+    top: 'center',
+    left: 'center',
+    width: `${screenWidth}`,
+    height: `${screenHeight}`,
+    content: ``,
+    tags: true,
+    padding: 2,
+    border: {
+        type: 'line'
+    },
+    style: {
+        fg: 'black',
+        bg: 'green',
+        transparent: false,
+        border: {
+            fg: '#f0f0f0'
+        }
+    }
+});
+
+screen.append(startScreen);
+
+// END SCREEN SET UP
+
+var optionDefentions = [{
+        name: 'hash',
+        alias: 'h',
+        type: String,
+        defaultValue: "sha256"
+    },
+    {
+        name: 'target',
+        alias: 't',
+        type: String
+    },
+    {
+        name: 'start',
+        alias: 's',
+        type: String,
+        defaultValue: "1"
+    },
+    {
+        name: 'delay',
+        alias: 'd',
+        type: String,
+        defaultValue: "5"
+    },
+    {
+        name: 'log',
+        alias: 'l',
+        type: Boolean
+    },
+    {
+        name: 'verbose',
+        alias: 'V',
+        type: Boolean
+    },
+    {
+        name: 'help',
+        type: Boolean
+    }
 ];
 
 var options = commandLineArgs(optionDefentions);
@@ -31,38 +115,57 @@ if (!options.target && !options.help == true) {
     console.log("\nHash-gen has been successfully installed! Time to get hashing.\n");
     process.exit(-1);
 }
+startScreen.insertTop(`{center}{underline}Welcome to Hash-gen - v2.5.14{/underline}{/center}`);
 
-// Set Hash Type e.g sha256
+
 var hashType = options.hash || "sha256";
 hashType = hashType.toLowerCase();
-console.log(`\nHash Type:   ${hashType}`);
+startScreen.insertLine("1", ``);
+startScreen.insertLine("2", `{bold}Hash Type:{/bold}   ${hashType}`);
+// console.log(`\nHash Type:   ${hashType}`);
 
-// Target Hash Value
 var targetHash = options.target;
 targetHash = targetHash.toLowerCase();
-console.log(`Target Hash: ${targetHash}\n`);
+// console.log(`Target Hash: ${targetHash}\n`);
+startScreen.insertLine("3", `{bold}Target Hash:{/bold} ${targetHash}`);
+screen.render();
 
-// Set the initial Integer Value to start encrypting
 var startInterger = options.start;
 generate.setStart(startInterger);
 
-// Delay in ms between hashes
 var delay = options.delay;
-// Whether to keep log of hashes
+startScreen.insertBottom("{bold}Delay:{/bold}   " + delay + "ms");
+screen.render();
+
 var log = options.log;
-// Verbose
+if (log == true){
+    startScreen.insertBottom("{bold}Log:{/bold}     " + log);
+    screen.render();
+} else {
+    startScreen.insertBottom("{bold}Log:{/bold}     false");
+    screen.render();
+}
+
 var verbose = options.verbose;
+if (verbose == true){
+    startScreen.insertBottom("{bold}Verbose:{/bold} " + verbose);
+    screen.render();
+} else {
+    startScreen.insertBottom("{bold}Verbose:{/bold} false");
+    screen.render();
+}
 
 var dir = './hash_logs';
-
-if (!fs.existsSync(dir)){
-    console.log("Created folder: " + process.cwd() + "/hash_logs");
+if (!fs.existsSync(dir)) {
+    startScreen.insertBottom("");
+    startScreen.insertBottom("{bold}Created folder:{/bold} " + process.cwd() + "/hash_logs");
+    screen.render();
+    // console.log("Created folder: " + process.cwd() + "/hash_logs");
     fs.mkdirSync(dir);
 }
 
 var fileContent = `${hashType} hash log\n\nTarget hash: ${targetHash}\n\n\n`;
 
-// The absolute path of the new file with its name
 var d = new Date();
 var n = d.getTime();
 n = n.toString().slice(8);
@@ -70,16 +173,64 @@ var filepath = `hash_logs/${hashType}-${n}.txt`;
 
 fs.writeFile(filepath, fileContent, (err) => {
     if (err) throw err;
-    console.log(`Matches will be saved to: ${process.cwd()}/${filepath}\n`);
+    startScreen.insertBottom("");
+    if (options.log == true){
+        startScreen.insertBottom(`{bold}Matches & logs saved to:{/bold} ${process.cwd()}/${filepath}\n`);
+    } else {
+        startScreen.insertBottom(`{bold}Matches saved to:{/bold} ${process.cwd()}/${filepath}\n`);
+    }
+    screen.render();
+    // console.log(`Matches will be saved to: ${process.cwd()}/${filepath}\n`);
 });
 
-var counter = 5;
+var progress = blessed.progressbar({
+  parent: startScreen.box,
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'default',
+    bar: {
+      bg: 'default',
+      fg: 'green'
+    },
+    border: {
+      fg: 'default',
+      bg: 'default'
+    }
+  },
+  ch: ':',
+  width: '40%',
+  height: 3,
+  top: 1,
+  left: 'center',
+  filled: 0
+});
+
+screen.append(progress);
+screen.render();
+
+var progressValue = 0;
+var counter = 10;
 var countdown = setInterval(function() {
-    if(counter <= 0) {
+    if (counter < 0) {
         clearInterval(countdown);
-        generate.hashes(hashType, targetHash, filepath, delay, log, verbose);
+        startScreen.insertBottom("");
+        startScreen.insertBottom("{center}Press [q] to exit at any time{/center}");
+        startScreen.insertBottom("{center}Press [return] to begin hashing...{/center}");
+
+        screen.render();
+        keypress(process.stdin);
+        process.stdin.on('keypress', function (ch, key) {
+            if (key && key.name == 'enter') {
+                generate.hashes(hashType, targetHash, filepath, delay, log, verbose);
+                process.stdin.unref()
+            }
+        });
+        process.stdin.setRawMode(true);
     } else {
-        console.log(`Starting hashing in ${counter.toString()} seconds.`);
+        progress.setProgress(progressValue);
+        screen.render();
     }
     counter--;
-}, 1000);
+    progressValue += 10;
+}, 200);
