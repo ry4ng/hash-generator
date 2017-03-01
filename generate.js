@@ -27,7 +27,6 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose){
                 console.log('Successfully saved match.\n');
             });
             clearInterval(hashGenerator);
-            return true;
         }
 
         console.log(`\nInt:  ${startInterger}`);
