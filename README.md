@@ -72,7 +72,8 @@ Writing to /Users/ryan/Documents/hash_logs/sha256-54048.txt...
 Successfully saved match.
 ```
 
-Locate the .txt file (different each time) and you will find the following text:
+Locate the .txt file, if `--log` was chosen this file will contain all the previous hex/hash pairs.
+You may need to run a search on the file for the target hash. Example contents of .txt file:
 
 ```
 Hash-gen matches.Matched On Int: 500
