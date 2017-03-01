@@ -3,6 +3,8 @@
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
 unencrypted value of the hash.
 
+![alt tag](https://s2.postimg.org/74q9wpg7t/Screen_Shot_2017_03_01_at_20_57_40.png)
+
 ## Example
 
 Take the number, `500`.
@@ -24,20 +26,6 @@ After running this command, Hash-gen would set the target hash target to `bf9949
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
-$ hash-gen -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
-
-Hash Type:   sha256
-Target Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
-
-Created folder: /Users/ryan/Documents/hash_logs
-Matches will be saved to: /Users/ryan/Documents/hash_logs/sha256-20811.txt
-
-Starting hashing in 4 seconds.
-Starting hashing in 3 seconds.
-Starting hashing in 2 seconds.
-Starting hashing in 1 seconds.
-Starting hashing in 0 seconds.
-
 Integer:    5
 Hex Value:  05
 Hash Value: c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2
@@ -89,12 +77,25 @@ Congratulations! You now know that your `target hash` has the hex value of `01f4
 ```bash
 $ npm install --global hash-gen
 ```
+
+Double check the installation has gone smoothly by simply running:
+
+```bash
+$ hash-gen
+```
+
+If it has, you should see the following message:
+
+```bash
+Hash-gen has been successfully installed! Time to get hashing.
+```
+
 ## 2. Start Hashing!
 
 ### App options
 
 ```bash
-$ hash-gen --hash sha256 --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
+$ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -V -l
 ```
 
 ```

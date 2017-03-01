@@ -1,6 +1,6 @@
 {
   "name": "hash-gen",
-  "version": "2.5.14",
+  "version": "3.2.9",
   "description": "Quickly generates key pair hex/hash values.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,13 +31,16 @@
   "preferGlobal": true,
   "bin": {
     "hash-gen": "hash-gen.js"
-},
+  },
   "bugs": {
     "url": "https://github.com/ryansmith98/hash-generator/issues"
   },
   "homepage": "https://github.com/ryansmith98/hash-generator#readme",
   "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5",
     "command-line-args": "^4.0.1",
-    "hex2dec": "^1.0.1"
+    "hex2dec": "^1.0.1",
+    "keypress": "^0.2.1"
   }
 }
