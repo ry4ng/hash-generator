@@ -17,7 +17,7 @@ program.key('q', function(ch, key) {
     program.disableMouse();
     program.showCursor();
     program.normalBuffer();
-    process.exit(0);
+    process.exit('userEnded');
 });
 
 var terminalWidth = process.stdout.columns;
@@ -239,5 +239,8 @@ var countdown = setInterval(function() {
 process.on('exit', (code) => {
     if (code == "matchFound"){
         console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
+    }
+    if (code == "userEnded"){
+        console.log(`Thank-you for using Hash-gen!\n`);
     }
 });
