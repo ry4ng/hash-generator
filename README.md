@@ -63,7 +63,7 @@ Hex Value:  09
 Hash Value: 3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105
 ```
 
-If Hash-gen does finds a match it will output something like this to the console:
+If Hash-gen does find a match it will output something similar to this:
 
 ```bash
 -- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --

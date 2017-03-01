@@ -1,6 +1,6 @@
 {
   "name": "hash-gen",
-  "version": "2.4.9",
+  "version": "2.4.10",
   "description": "Quickly generates key pair hex/hash values.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,10 +22,9 @@
     "sha-512",
     "hash",
     "values",
-    "hash",
     "database",
-    "hash",
-    "indexing"
+    "indexing",
+    "crypto",
   ],
   "author": "Ryan Smith",
   "license": "ISC",
