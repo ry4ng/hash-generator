@@ -72,7 +72,7 @@ Writing to /Users/ryan/Documents/hash_logs/sha256-54048.txt...
 Successfully saved match.
 ```
 
-Locate the .txt file, if the `--log` argument passed, this file will contain all the previous hex/hash pairs.
+Locate the .txt file, if the `--log` argument was passed, this file will contain all the previous hex/hash pairs.
 You may need to run a search on the file for the target hash. Example contents of .txt file:
 
 ```
