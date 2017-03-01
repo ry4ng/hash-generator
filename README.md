@@ -89,6 +89,19 @@ Congratulations! You now know that your `target hash` has the hex value of `01f4
 ```bash
 $ npm install --global hash-gen
 ```
+
+Double check the installation has gone smoothly by simply running:
+
+```bash
+$ hash-gen
+```
+
+If it has, you should see the following message:
+
+```bash
+Hash-gen has been successfully installed! Time to get hashing.
+```
+
 ## 2. Start Hashing!
 
 ### App options
