@@ -93,7 +93,7 @@ npm install --global hash-gen
 ### App options
 
 ```bash
-hash-gen --hash sha256 --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
+$ hash-gen --hash sha256 --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
 ```
 
 ```
