@@ -3,7 +3,7 @@
   "version": "3.3.3",
   "description": "Quickly generates key pair hex/hash values.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node hash-gen.js",
     "patch": "npm version patch && npm publish"
   },
@@ -42,5 +42,8 @@
     "command-line-args": "^4.0.1",
     "hex2dec": "^1.0.1",
     "keypress": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
   }
 }
