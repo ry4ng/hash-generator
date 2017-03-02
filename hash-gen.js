@@ -34,16 +34,24 @@ var verbose = args.verbose;
 var ssh = args.ssh;
 
 if (create){
-    var input = create;
-    var digest = args.digest;
-    console.log(`\nInput: ${input}\n`);
-    console.log(`Algorithm: ${hashType}`);
-    console.log(`Digest: ${digest}\n`);
-    var hash = crypt.hash(input, hashType, digest);
-    console.log('---------------------------Hash output---------------------------\n');
-    console.log(`${hash}\n`);
-    console.log('---------------------------Hash output---------------------------\n');
-    process.exit('hashCreated');
+    if (crypt.hashes.indexOf(hashType) > -1){
+        var input = create;
+        var digest = args.digest;
+        console.log(`\nInput: ${input}\n`);
+        console.log(`Algorithm: ${hashType}`);
+        console.log(`Digest: ${digest}\n`);
+
+        var hash = crypt.hash(input, hashType, digest);
+
+        console.log('---------------------------Hash output---------------------------\n');
+        console.log(`${hash}\n`);
+        console.log('---------------------------Hash output---------------------------\n');
+        process.exit('hashCreated');
+    } else {
+        console.log('\nUnsupported hash algorithm.');
+        console.log('Please refer to https://www.npmjs.com/package/hash-gen for a list of currently supported hash algorithim\'s\n');
+        process.exit(-1);
+    }
 }
 
 if (targetHash){
