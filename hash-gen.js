@@ -15,7 +15,7 @@ if (args.help) {
     help.show();
 }
 
-if (!args.target && !args.help && args.create == "") {
+if (!args.target && !args.help && args.create == undefined) {
     console.log("\nHash-gen has been successfully installed! Time to get hashing.\n");
     process.exit(-1);
 }
