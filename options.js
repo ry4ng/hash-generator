@@ -44,7 +44,12 @@ var optionDefentions = [{
     {
         name: 'create',
         alias: 'c',
-        type: Boolean
+        type: String
+    },
+    {
+        name: 'digest',
+        type: String,
+        defaultValue: "hex"
     }
 ];
 
