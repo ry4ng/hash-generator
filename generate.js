@@ -11,7 +11,7 @@ function setInteger(stringInt) {
     startInterger = stringInt;
 }
 
-function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
+function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh) {
     var hashType = hashType;
     var targetHash = targetHash;
 
@@ -43,6 +43,10 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
 
     // screen.append(output);
 
+    if (ssh == true){
+        console.log('\n SSH mode enabled.');
+        console.log('\n Started hashing...');
+    }
     var hashGenerator = setInterval(start, delay);
 
     function start() {
@@ -62,14 +66,15 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
             clearInterval(hashGenerator);
         }
 
-        if (verbose == true) {
-            console.log(`\nInt:  ${startInterger}`);
-            console.log(`Hex:  ${hexString.replace("x", "")}`);
-            console.log(`Hash: ${hash}\n`);
-        } else {
-            console.log(`${hash}`);
+        if (ssh != true){
+            if (verbose == true) {
+                console.log(`\nInt:  ${startInterger}`);
+                console.log(`Hex:  ${hexString.replace("x", "")}`);
+                console.log(`Hash: ${hash}\n`);
+            } else {
+                console.log(`${hash}`);
+            }
         }
-
 
         if (log == true) {
             fs.appendFileSync(filepath, `${startInterger}\n`);

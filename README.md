@@ -1,3 +1,5 @@
+WORK IN PROGRESS - Feel free to raise any issues, features or improvements on GitHub!
+
 ## What does this program do?
 
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
@@ -99,12 +101,13 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 ```
 
 ```
-    --help      Shows help for Hash-gen
--t, --target    The hash you are trying to find a match for.
+-t, --target    The hash you are trying to find a match for
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
--s, --start     The number you would like to start at (1 is default).
--d, --delay     Delay in milliseconds between each hash (5 is default).
+-s, --start     The number you would like to start at (1 is default)
+-d, --delay     Delay in milliseconds between each hash (5 is default)
 
--l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON).
+-l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON)
 -V, --Verbose   Verbose output (Shows hex & hash)
+    --help      Shows help for Hash-gen
+    --ssh       Enables SSH mode (No console output at all)
 ```

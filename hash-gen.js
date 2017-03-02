@@ -29,8 +29,8 @@ if (terminalHeight < 30){
     screenWidth = '80%';
     screenHeight = '75%';
 } else {
-    screenWidth = '55%';
-    screenHeight = '50%';
+    screenWidth = '80%';
+    screenHeight = '80%';
 }
 
 screen.title = 'Hash-gen';
@@ -55,7 +55,30 @@ var startScreen = blessed.box({
     }
 });
 
-screen.append(startScreen);
+var progress = blessed.progressbar({
+  parent: startScreen.box,
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'default',
+    bar: {
+      bg: 'default',
+      fg: 'green'
+    },
+    border: {
+      fg: 'default',
+      bg: 'default'
+    }
+  },
+  ch: ':',
+  width: '40%',
+  height: 3,
+  top: 1,
+  left: 'center',
+  filled: 0
+});
+
+screen.append(startScreen, progress);
 
 // END SCREEN SET UP
 
@@ -94,6 +117,10 @@ var optionDefentions = [{
     },
     {
         name: 'help',
+        type: Boolean
+    },
+    {
+        name: 'ssh',
         type: Boolean
     }
 ];
@@ -184,31 +211,9 @@ fs.writeFile(filepath, fileContent, (err) => {
     // console.log(`Matches will be saved to: ${process.cwd()}/${filepath}\n`);
 });
 
-var progress = blessed.progressbar({
-  parent: startScreen.box,
-  border: 'line',
-  style: {
-    fg: 'blue',
-    bg: 'default',
-    bar: {
-      bg: 'default',
-      fg: 'green'
-    },
-    border: {
-      fg: 'default',
-      bg: 'default'
-    }
-  },
-  ch: ':',
-  width: '40%',
-  height: 3,
-  top: 1,
-  left: 'center',
-  filled: 0
-});
-
-screen.append(progress);
 screen.render();
+
+var ssh = options.ssh;
 
 var progressValue = 0;
 var counter = 10;
@@ -226,7 +231,7 @@ var countdown = setInterval(function() {
                 screen.remove(startScreen);
                 screen.remove(progress);
                 screen.render();
-                generate.hashes(hashType, targetHash, filepath, delay, log, verbose);
+                generate.hashes(hashType, targetHash, filepath, delay, log, verbose, ssh);
                 process.stdin.unref();
             }
         });
