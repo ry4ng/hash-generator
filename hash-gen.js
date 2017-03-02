@@ -122,6 +122,11 @@ var optionDefentions = [{
     {
         name: 'ssh',
         type: Boolean
+    },
+    {
+        name: 'create',
+        alias: 'c',
+        type: Boolean
     }
 ];
 
