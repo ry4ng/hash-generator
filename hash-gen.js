@@ -36,12 +36,13 @@ var ssh = args.ssh;
 if (create){
     var input = create;
     var digest = args.digest;
-    console.log(`\nInput: ${input}`);
+    console.log(`\nInput: ${input}\n`);
     console.log(`Algorithm: ${hashType}`);
     console.log(`Digest: ${digest}\n`);
     var hash = crypt.hash(input, hashType, digest);
-    console.log('-Hash output-');
+    console.log('---------------------------Hash output---------------------------\n');
     console.log(`${hash}\n`);
+    console.log('---------------------------Hash output---------------------------\n');
     process.exit('hashCreated');
 }
 
