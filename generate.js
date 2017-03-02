@@ -62,19 +62,17 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose) {
             clearInterval(hashGenerator);
         }
 
-        console.log(`\nInt:  ${startInterger}`);
         if (verbose == true) {
-            // output.log("");
-            // output.log("Int:  " + startInterger);
-            // output.log("Hex:  " + hexString.replace("x", ""));
-            // output.log("Hash: " + hash + "");
-            // output.log("");
-            // screen.render();
+            console.log(`\nInt:  ${startInterger}`);
             console.log(`Hex:  ${hexString.replace("x", "")}`);
             console.log(`Hash: ${hash}\n`);
+        } else {
+            console.log(`${hash}`);
         }
 
+
         if (log == true) {
+            fs.appendFileSync(filepath, `${startInterger}\n`);
             fs.appendFileSync(filepath, `${hexString.replace("x", "")}\n`);
             fs.appendFileSync(filepath, `${hash}\n\n`);
         }

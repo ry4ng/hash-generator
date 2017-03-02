@@ -158,7 +158,7 @@ if (verbose == true){
 
 var dir = './hash_logs';
 if (!fs.existsSync(dir)) {
-    startScreen.insertBottom("");
+    // startScreen.insertBottom("");
     startScreen.insertBottom("{bold}Created folder:{/bold} " + process.cwd() + "/hash_logs");
     screen.render();
     // console.log("Created folder: " + process.cwd() + "/hash_logs");
@@ -223,8 +223,11 @@ var countdown = setInterval(function() {
         keypress(process.stdin);
         process.stdin.on('keypress', function (ch, key) {
             if (key && key.name == 'enter') {
+                screen.remove(startScreen);
+                screen.remove(progress);
+                screen.render();
                 generate.hashes(hashType, targetHash, filepath, delay, log, verbose);
-                process.stdin.unref()
+                process.stdin.unref();
             }
         });
         process.stdin.setRawMode(true);
