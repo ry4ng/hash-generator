@@ -78,7 +78,7 @@ var progress = blessed.progressbar({
   filled: 0
 });
 
-screen.append(startScreen, progress);
+screen.append(startScreen);
 
 // END SCREEN SET UP
 
@@ -220,6 +220,7 @@ fs.writeFile(filepath, fileContent, (err) => {
     // console.log(`Matches will be saved to: ${process.cwd()}/${filepath}\n`);
 });
 
+screen.append(progress);
 screen.render();
 
 var progressValue = 0;

@@ -1,6 +1,6 @@
 {
   "name": "hash-gen",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "Quickly generates key pair hex/hash values.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
