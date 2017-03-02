@@ -162,30 +162,39 @@ var startInterger = options.start;
 generate.setStart(startInterger);
 
 var delay = options.delay;
-startScreen.insertBottom("{bold}Delay:{/bold}   " + delay + "ms");
+startScreen.insertBottom("{bold}Delay:{/bold}    " + delay + "ms");
 screen.render();
 
 var log = options.log;
 if (log == true){
-    startScreen.insertBottom("{bold}Log:{/bold}     " + log);
+    startScreen.insertBottom("{bold}Log:{/bold}      " + log);
     screen.render();
 } else {
-    startScreen.insertBottom("{bold}Log:{/bold}     false");
+    startScreen.insertBottom("{bold}Log:{/bold}      false");
     screen.render();
 }
 
 var verbose = options.verbose;
 if (verbose == true){
-    startScreen.insertBottom("{bold}Verbose:{/bold} " + verbose);
+    startScreen.insertBottom("{bold}Verbose:{/bold}  " + verbose);
     screen.render();
 } else {
-    startScreen.insertBottom("{bold}Verbose:{/bold} false");
+    startScreen.insertBottom("{bold}Verbose:{/bold}  false");
+    screen.render();
+}
+
+var ssh = options.ssh;
+if (ssh == true){
+    startScreen.insertBottom("{bold}SSH Mode:{/bold} enabled");
+    screen.render();
+} else {
+    startScreen.insertBottom("{bold}SSH Mode:{/bold} disabled");
     screen.render();
 }
 
 var dir = './hash_logs';
 if (!fs.existsSync(dir)) {
-    // startScreen.insertBottom("");
+    startScreen.insertBottom("");
     startScreen.insertBottom("{bold}Created folder:{/bold} " + process.cwd() + "/hash_logs");
     screen.render();
     // console.log("Created folder: " + process.cwd() + "/hash_logs");
@@ -212,8 +221,6 @@ fs.writeFile(filepath, fileContent, (err) => {
 });
 
 screen.render();
-
-var ssh = options.ssh;
 
 var progressValue = 0;
 var counter = 10;

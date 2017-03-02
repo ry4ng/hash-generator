@@ -108,6 +108,7 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 
 -l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON)
 -V, --Verbose   Verbose output (Shows hex & hash)
+
     --help      Shows help for Hash-gen
-    --ssh       Enables SSH mode (No console output at all)
+    --ssh       Enables SSH mode (No console output at all) - Highly recommended when running Hash-gen on a VPS
 ```
