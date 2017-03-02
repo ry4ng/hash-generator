@@ -3,10 +3,14 @@
 const fs = require('fs');
 const commandLineArgs = require('command-line-args');
 const generate = require('./generate');
+const options = require('./options');
 
 const keypress = require('keypress');
 const blessed = require('blessed');
 const contrib = require('blessed-contrib');
+
+// Returns the arguments passed into Hash-gen
+var args = options.getArgs();
 
 // SCREEN SET UP
 
@@ -81,56 +85,6 @@ var progress = blessed.progressbar({
 screen.append(startScreen);
 
 // END SCREEN SET UP
-
-var optionDefentions = [{
-        name: 'hash',
-        alias: 'h',
-        type: String,
-        defaultValue: "sha256"
-    },
-    {
-        name: 'target',
-        alias: 't',
-        type: String
-    },
-    {
-        name: 'start',
-        alias: 's',
-        type: String,
-        defaultValue: "1"
-    },
-    {
-        name: 'delay',
-        alias: 'd',
-        type: String,
-        defaultValue: "5"
-    },
-    {
-        name: 'log',
-        alias: 'l',
-        type: Boolean
-    },
-    {
-        name: 'verbose',
-        alias: 'V',
-        type: Boolean
-    },
-    {
-        name: 'help',
-        type: Boolean
-    },
-    {
-        name: 'ssh',
-        type: Boolean
-    },
-    {
-        name: 'create',
-        alias: 'c',
-        type: Boolean
-    }
-];
-
-var options = commandLineArgs(optionDefentions);
 
 if (options.help == true) {
     console.log("\n-t, --target    The hash you are trying to find a match for.");
