@@ -2,9 +2,6 @@ const converter = require('hex2dec');
 const crypto = require('crypto');
 const fs = require('fs');
 
-// const blessed = require('blessed');
-// const contrib = require('blessed-contrib');
-
 var startInterger = "";
 
 function setInteger(stringInt) {
@@ -14,34 +11,6 @@ function setInteger(stringInt) {
 function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh) {
     var hashType = hashType;
     var targetHash = targetHash;
-
-    // var screen = blessed.screen();
-    // grid = new contrib.grid({rows: 5, cols: 2, screen: screen});
-    // var output;
-    // var windowWidth = process.stdout.columns;
-    // var windowHeight = process.stdout.rows;
-    //
-    // if (windowWidth < 80){
-    //     if (windowHeight <= 30){
-    //         output = grid.set(0, 0, 5, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     } else {
-    //         output = grid.set(0, 0, 4, 2, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     }
-    // } else if (windowWidth > 150){
-    //     if (windowHeight <= 30){
-    //         output = grid.set(0, 0, 5, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     } else {
-    //         output = grid.set(0, 0, 4, 1, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     }
-    // } else {
-    //     if (windowHeight <= 30){
-    //         output = grid.set(0, 0, 5, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     } else {
-    //         output = grid.set(0, 0, 4, 1.4, contrib.log, {fg: "green", selectedFg: "green", label: 'Hash Log'});
-    //     }
-    // }
-
-    // screen.append(output);
 
     if (ssh == true){
         console.log('\n SSH mode enabled.');

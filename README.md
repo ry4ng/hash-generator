@@ -94,21 +94,39 @@ Hash-gen has been successfully installed! Time to get hashing.
 
 ## 2. Start Hashing!
 
-### App options
-
 ```bash
 $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d -s 5 -d 1 -V -l
 ```
 
+### Hash Matching
 ```
 -t, --target    The hash you are trying to find a match for
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -s, --start     The number you would like to start at (1 is default)
 -d, --delay     Delay in milliseconds between each hash (5 is default)
-
 -l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON)
 -V, --Verbose   Verbose output (Shows hex & hash)
-
-    --help      Shows help for Hash-gen
     --ssh       Enables SSH mode (No console output at all) - Highly recommended when running Hash-gen on a VPS
 ```
+
+### Hash Creation
+```
+-c, --create    Only used when creating a hash. The value you would like to hash (e.g. password)
+-h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 default)
+    --digest    hex, base64, utf8, latin1 (hex default)
+```
+
+### Global
+```
+    --help      Shows help for Hash-gen
+```
+
+## Currently Supported hashes
+
+`md4`, `md5`, `mdc2`,
+`sha`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`
+`dss1`,
+`ripemd`, `ripemd160`, `rmd160`,
+`whirlpool`
+
+More hashing algorithm's coming soon!
