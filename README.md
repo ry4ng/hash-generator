@@ -128,3 +128,5 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 `dss1`,
 `ripemd`, `ripemd160`, `rmd160`,
 `whirlpool`
+
+More hashing algorithm's coming soon!
