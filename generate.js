@@ -21,7 +21,7 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh
     function start() {
 
         var hexString = converter.decToHex(startInterger);
-        hexString = hexString.replace("x", "");
+        hexString = hexString.replace("0x", "");
         var hash = crypto.createHash(hashType).update(hexString).digest('hex');
 
         if (hash == targetHash) {
