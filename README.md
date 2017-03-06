@@ -1,5 +1,10 @@
 WORK IN PROGRESS - Feel free to raise any issues, features or improvements on GitHub!
 
+[![npm version](https://badge.fury.io/js/hash-gen.svg)](https://badge.fury.io/js/hash-gen)
+[![npm](https://img.shields.io/npm/dm/hash-gen.svg)](https://www.npmjs.com/package/hash-gen)
+
+[![NPM](https://nodei.co/npm/hash-gen.png?downloads=true&downloadRank=true)](https://nodei.co/npm/hash-gen/)
+
 ## What does this program do?
 
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
@@ -124,9 +129,9 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 ## Currently Supported hashes
 
 `md4`, `md5`, `mdc2`,
-`sha`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`
+`sha`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`,
 `dss1`,
 `ripemd`, `ripemd160`, `rmd160`,
 `whirlpool`
 
-More hashing algorithm's coming soon!
+More hashing algorithm's coming soon! Keep updated via GitHub!

@@ -1,7 +1,7 @@
 {
   "name": "hash-gen",
-  "version": "3.4.1",
-  "description": "Quickly generates key pair hex/hash values.",
+  "version": "3.4.30",
+  "description": "Quickly generates key pair hex/hash values. 100% Javascript.",
   "scripts": {
     "test": "mocha",
     "start": "node hash-gen.js",
@@ -24,7 +24,10 @@
     "values",
     "database",
     "indexing",
-    "crypto"
+    "crypto",
+    "hash generator",
+    "generate hashs",
+    "brute force"
   ],
   "author": "Ryan Smith",
   "license": "ISC",

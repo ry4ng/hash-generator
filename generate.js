@@ -79,9 +79,7 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh
         var int = parseInt(startInterger);
         int++;
         startInterger = int.toString();
-
     }
-
 }
 
 module.exports = {

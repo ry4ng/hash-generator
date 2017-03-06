@@ -144,8 +144,7 @@ if (targetHash){
 process.on('exit', (code) => {
     if (code == "matchFound"){
         console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
-    }
-    if (code == "userEnded"){
+    } else if (code == "userEnded"){
         console.log(`Thank-you for using Hash-gen!\n`);
     }
 });
