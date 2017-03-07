@@ -2,7 +2,7 @@ WORK IN PROGRESS - Feel free to raise any issues, features or improvements on Gi
 
 [![npm version](https://badge.fury.io/js/hash-gen.svg)](https://badge.fury.io/js/hash-gen)
 [![npm](https://img.shields.io/npm/dm/hash-gen.svg)](https://www.npmjs.com/package/hash-gen)
-[![dev](https://travis-ci.org/ryansmith98/hash-generator.svg?branch=master)
+[![Build Status](https://travis-ci.org/ryansmith98/hash-generator.svg?branch=master)](https://travis-ci.org/ryansmith98/hash-generator)
 
 [![NPM](https://nodei.co/npm/hash-gen.png?downloads=true&downloadRank=true)](https://nodei.co/npm/hash-gen/)
 
