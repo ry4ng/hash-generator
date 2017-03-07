@@ -94,7 +94,7 @@ Congratulations! You now know that your `target hash` has the hex value of `01f4
 $ npm install --global hash-gen
 ```
 
-Double check the installation has gone smoothly by simply running:
+Ensure you are using node version 6 or above. Double check the installation has gone smoothly by simply running:
 
 ```bash
 $ hash-gen
