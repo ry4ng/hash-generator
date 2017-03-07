@@ -116,7 +116,7 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 -t, --target    The hash you are trying to find a match for
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -s, --start     The number you would like to start at (1 is default)
--d, --delay     Delay in milliseconds between each hash (5 is default)
+-d, --delay     Delay in milliseconds between each hash (5 is default, 1 is minimum value)
 -l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON)
 -V, --Verbose   Verbose output (Shows hex & hash)
     --ssh       Enables SSH mode (No console output at all) - Highly recommended when running Hash-gen on a VPS
