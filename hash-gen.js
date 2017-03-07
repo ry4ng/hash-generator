@@ -127,7 +127,17 @@ if (targetHash){
                     mainScreen.remove(progressBar);
                     mainScreen.render();
                     generate.setStart(startInterger);
-                    generate.hashes(hashType, targetHash, filepath, delay, log, verbose, ssh);
+                    generate.hashes(hashType, targetHash, filepath, delay, log, verbose, ssh, function(int, hex, hash, npmTest){
+                        if (!npmTest){
+                            fs.appendFile(filepath, `Matched On Int: ${int}\nHex Value: ${hex}\nHash Type: ${hashType}\nHash: ${hash}\n\n`, (err) => {
+                                if (err){
+                                    process.exit('matchFound-ns');
+                                }
+                                console.log('Successfully saved match.\n');
+                                process.exit('matchFound');
+                            });
+                        }
+                    });
                     process.stdin.unref();
                 }
             });
@@ -142,10 +152,15 @@ if (targetHash){
 }
 
 process.on('exit', (code) => {
-    if (code == "matchFound"){
-        console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
-    }
-    if (code == "userEnded"){
-        console.log(`Thank-you for using Hash-gen!\n`);
+    switch (code) {
+        case "matchFound":
+            console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
+            break;
+        case "matchFound-ns":
+        console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nAn error occured while saving match to file.\n`);
+            break
+        case "userEnded":
+            console.log(`Thank-you for using Hash-gen!\n`);
+            break;
     }
 });

@@ -1,5 +1,10 @@
 WORK IN PROGRESS - Feel free to raise any issues, features or improvements on GitHub!
 
+[![npm version](https://badge.fury.io/js/hash-gen.svg)](https://badge.fury.io/js/hash-gen)
+[![npm](https://img.shields.io/npm/dm/hash-gen.svg)](https://www.npmjs.com/package/hash-gen)
+
+[![NPM](https://nodei.co/npm/hash-gen.png?downloads=true&downloadRank=true)](https://nodei.co/npm/hash-gen/)
+
 ## What does this program do?
 
 Hash-gen aims to find the matching hex value for a given hash, therefore finding out the
@@ -11,46 +16,52 @@ unencrypted value of the hash.
 
 Take the number, `500`.
 
-Convert `500` to hex and you will get `01f4`.
+Convert `500` to hex and you will get `1f4`.
 
-Encrypt `01f4` with sha256 and you will get the following hash:
+Encrypt `1f4` with sha256 and you will get the following hash:
 
-`bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d`
+`10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d`
 
 Now, say you are trying to find the value behind this hash. How would Hash-gen
 do this? Just run the following:
 
 ```bash
-$ hash-gen --target bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d --start 5 --delay 1 --Verbose --log
+$ hash-gen -t 10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d -s 5 -d 1 -h sha256 -V --log
 ```
 
-After running this command, Hash-gen would set the target hash target to `bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d`, starting at `5` it would increment by `1`, each time converting the number to hex, hashing the hex and checking
+After running this command, Hash-gen would set the target hash target to `10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d`, starting at `5` it would increment by `1`, each time converting the number to hex, hashing the hex and checking
 to see if the hash is equal to the `target` hash. For example:
 
 ```bash
-Integer:    5
-Hex Value:  05
-Hash Value: c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2
+Int:  5
+Hex:  5
+Hash: ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d
 
+...
 
-Integer:    6
-Hex Value:  06
-Hash Value: aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849
+Int:  170
+Hex:  aa
+Hash: 961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506
 
+Int:  171
+Hex:  ab
+Hash: fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603
 
-Integer:    7
-Hex Value:  07
-Hash Value: 19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815
+Int:  172
+Hex:  ac
+Hash: f45de51cdef30991551e41e882dd7b5404799648a0a00753f44fc966e6153fc1
 
+Int:  173
+Hex:  ad
+Hash: 70ba33708cbfb103f1a8e34afef333ba7dc021022b2d9aaa583aabb8058d8d67
 
-Integer:    8
-Hex Value:  08
-Hash Value: 323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece
+Int:  174
+Hex:  ae
+Hash: f9a00f43e97e3966bb846e76b6795e11512c3bbfa787e6b70e0310c7b9346b98
 
-
-Integer:    9
-Hex Value:  09
-Hash Value: 3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105
+Int:  175
+Hex:  af
+Hash: 503126878d17fcd6bde7df320ff6eb7c278a1c42f30014a03b17f3dd0c023c1d
 ```
 
 If Hash-gen does find a match it will output something similar to this:
@@ -66,10 +77,12 @@ Locate the .txt file, if the `--log` argument was passed, this file will contain
 You may need to run a search on the file for the target hash. Example contents of .txt file:
 
 ```
-Hash-gen matches.Matched On Int: 500
-Hex Value: 01f4
+sha256 hash log.
+
+Matched On Int: 500
+Hex Value: 1f4
 Hash Type: sha256
-Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
+Hash: 	10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d
 ```
 
 Congratulations! You now know that your `target hash` has the hex value of `01f4`.
@@ -103,7 +116,7 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 -t, --target    The hash you are trying to find a match for
 -h, --hash      Type of hash e.g sha256, sha512 etc. (sha256 is default)
 -s, --start     The number you would like to start at (1 is default)
--d, --delay     Delay in milliseconds between each hash (5 is default)
+-d, --delay     Delay in milliseconds between each hash (5 is default, 1 is minimum value)
 -l, --log       Keep a log of all created hashes to file (Can slow hash generation when ON)
 -V, --Verbose   Verbose output (Shows hex & hash)
     --ssh       Enables SSH mode (No console output at all) - Highly recommended when running Hash-gen on a VPS
@@ -124,9 +137,11 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 ## Currently Supported hashes
 
 `md4`, `md5`, `mdc2`,
-`sha`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`
+`sha`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`,
 `dss1`,
 `ripemd`, `ripemd160`, `rmd160`,
 `whirlpool`
 
-More hashing algorithm's coming soon!
+More hashing algorithm's coming soon! Keep updated via GitHub!
+
+[![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg?style=flat-square)](https://github.com/ryansmith98/hash-generator/blob/master/LICENSE.md)
