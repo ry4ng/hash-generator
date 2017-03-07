@@ -8,11 +8,11 @@ function setInteger(stringInt) {
     startInterger = stringInt;
 }
 
-function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh) {
+function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh, npmTest, callback) {
     var hashType = hashType;
     var targetHash = targetHash;
 
-    if (ssh == true){
+    if (ssh == true && !npmTest){
         console.log('\n SSH mode enabled.');
         console.log('\n Started hashing...');
     }
@@ -25,13 +25,11 @@ function generateHashes(hashType, targetHash, filepath, delay, log, verbose, ssh
         var hash = crypto.createHash(hashType).update(hexString).digest('hex');
 
         if (hash == targetHash) {
-            console.log('\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n');
-            console.log(`Writing to ${process.cwd()}/${filepath}...`);
-            fs.appendFile(filepath, `Matched On Int: ${startInterger}\nHex Value: ${hexString}\nHash Type: ${hashType}\nHash: ${hash}\n\n`, (err) => {
-                if (err) throw err;
-                console.log('Successfully saved match.\n');
-                process.exit('matchFound');
-            });
+            if (!npmTest){
+                console.log('\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n');
+                console.log(`Writing to ${process.cwd()}/${filepath}...\n`);
+            }
+            callback(startInterger, hexString, hash, npmTest);
             clearInterval(hashGenerator);
         }
 
