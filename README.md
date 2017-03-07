@@ -86,7 +86,7 @@ Hash Type: sha256
 Hash: 	10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d
 ```
 
-Congratulations! You now know that your `target hash` has the hex value of `01f4`.
+Congratulations! You now know that your `target hash` has the hex value of `1f4`.
 
 ## 1. Install hash-gen
 
@@ -94,7 +94,7 @@ Congratulations! You now know that your `target hash` has the hex value of `01f4
 $ npm install --global hash-gen
 ```
 
-Double check the installation has gone smoothly by simply running:
+Ensure you are using node version 6 or above. Double check the installation has gone smoothly by simply running:
 
 ```bash
 $ hash-gen
