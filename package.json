@@ -1,6 +1,6 @@
 {
   "name": "hash-gen",
-  "version": "3.5.59",
+  "version": "3.5.60",
   "description": "Quickly generates key pair hex/hash values. 100% Javascript.",
   "scripts": {
     "test": "mocha",
