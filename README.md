@@ -77,10 +77,12 @@ Locate the .txt file, if the `--log` argument was passed, this file will contain
 You may need to run a search on the file for the target hash. Example contents of .txt file:
 
 ```
-Hash-gen matches.Matched On Int: 500
-Hex Value: 01f4
+sha256 hash log.
+
+Matched On Int: 500
+Hex Value: 1f4
 Hash Type: sha256
-Hash: bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738fd1d8be4d
+Hash: 	10be707c02c8eafff11f843178cc5c86381b2d31d3569b268ad4d0a4dc890c7d
 ```
 
 Congratulations! You now know that your `target hash` has the hex value of `01f4`.
