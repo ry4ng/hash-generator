@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 const fs = require('fs');
 const keypress = require('keypress');
 
@@ -23,7 +24,7 @@ if (!args.target && !args.help && args.create == undefined) {
 var hashType = args.hash || "sha256";
 hashType = hashType.toLowerCase();
 var targetHash = args.target;
-if (targetHash){
+if (targetHash) {
     targetHash = targetHash.toLowerCase();
 }
 var create = args.create;
@@ -33,8 +34,8 @@ var log = args.log;
 var verbose = args.verbose;
 var ssh = args.ssh;
 
-if (create){
-    if (crypt.hashes.indexOf(hashType) > -1){
+if (create) {
+    if (crypt.hashes.indexOf(hashType) > -1) {
         var input = create;
         var digest = args.digest;
         console.log(`\nInput: ${input}\n`);
@@ -54,7 +55,7 @@ if (create){
     }
 }
 
-if (targetHash){
+if (targetHash) {
     var mainScreen = screen.getScreen();
     var infoBox = screen.getInfoBox();
     var progressBar = screen.getProgressBar();
@@ -69,17 +70,17 @@ if (targetHash){
     mainScreen.render();
     infoBox.insertBottom("{bold}Delay:{/bold}    " + delay + "ms");
     mainScreen.render();
-    if (log == true){
+    if (log == true) {
         infoBox.insertBottom("{bold}Log:{/bold}      " + log);
     } else {
         infoBox.insertBottom("{bold}Log:{/bold}      false");
     }
-    if (verbose == true){
+    if (verbose == true) {
         infoBox.insertBottom("{bold}Verbose:{/bold}  " + verbose);
     } else {
         infoBox.insertBottom("{bold}Verbose:{/bold}  false");
     }
-    if (ssh == true){
+    if (ssh == true) {
         infoBox.insertBottom("{bold}SSH Mode:{/bold} enabled");
     } else {
         infoBox.insertBottom("{bold}SSH Mode:{/bold} disabled");
@@ -103,7 +104,7 @@ if (targetHash){
     fs.writeFile(filepath, fileContent, (err) => {
         if (err) throw err;
         infoBox.insertBottom("");
-        if (args.log == true){
+        if (args.log == true) {
             infoBox.insertBottom(`{bold}Matches & logs saved to:{/bold} ${process.cwd()}/${filepath}\n`);
         } else {
             infoBox.insertBottom(`{bold}Matches saved to:{/bold} ${process.cwd()}/${filepath}\n`);
@@ -121,16 +122,16 @@ if (targetHash){
             mainScreen.render();
 
             keypress(process.stdin);
-            process.stdin.on('keypress', function (ch, key) {
+            process.stdin.on('keypress', function(ch, key) {
                 if (key && key.name == 'enter') {
                     mainScreen.remove(infoBox);
                     mainScreen.remove(progressBar);
                     mainScreen.render();
                     generate.setStart(startInterger);
-                    generate.hashes(hashType, targetHash, filepath, delay, log, verbose, ssh, function(int, hex, hash, npmTest){
-                        if (!npmTest){
+                    generate.hashes(hashType, targetHash, filepath, delay, log, verbose, ssh, function(int, hex, hash, npmTest) {
+                        if (!npmTest) {
                             fs.appendFile(filepath, `Matched On Int: ${int}\nHex Value: ${hex}\nHash Type: ${hashType}\nHash: ${hash}\n\n`, (err) => {
-                                if (err){
+                                if (err) {
                                     process.exit('matchFound-ns');
                                 }
                                 console.log('Successfully saved match.\n');
@@ -157,7 +158,7 @@ process.on('exit', (code) => {
             console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nCheck ${filepath} for the matching hex value!\n`);
             break;
         case "matchFound-ns":
-        console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nAn error occured while saving match to file.\n`);
+            console.log(`\n-- A MATCH FOR YOUR HASH VALUE HAS BEEN FOUND --\n\nAn error occured while saving match to file.\n`);
             break
         case "userEnded":
             console.log(`Thank-you for using Hash-gen!\n`);
