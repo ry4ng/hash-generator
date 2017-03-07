@@ -144,4 +144,4 @@ $ hash-gen -h sha256 -t bf9949911bad9ad71e2b8d4904ea4ffd386a6a8fa03e68e1d2ac738f
 
 More hashing algorithm's coming soon! Keep updated via GitHub!
 
-[MIT License](https://github.com/ryansmith98/hash-generator/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg?style=flat-square)](https://github.com/ryansmith98/hash-generator/blob/master/LICENSE.md)
