@@ -5,6 +5,7 @@ WORK IN PROGRESS - Feel free to raise any issues, features or improvements on Gi
 [![Build Status](https://travis-ci.org/ryansmith98/hash-generator.svg?branch=master)](https://travis-ci.org/ryansmith98/hash-generator)
 
 [![NPM](https://nodei.co/npm/hash-gen.png?downloads=true&downloadRank=true)](https://nodei.co/npm/hash-gen/)
+[![NPM](https://nodei.co/npm-dl/hash-gen.png?months=1&height=3)](https://nodei.co/npm/hash-gen/)
 
 ## What does this program do?
 
